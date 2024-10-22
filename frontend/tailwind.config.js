@@ -1,12 +1,12 @@
-// tailwind.config.js
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  purge: ['./src/**/*.{js,jsx,ts,tsx,jpg,png}', './index.html'],
-  darkMode: false,
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}", // Adjust this path based on your file structure
+    "./public/index.html", // Ensure this is included if you have an HTML file in the public directory
+  ],
   theme: {
     extend: {},
   },
-  variants: {
-    extend: {},
-  },
+  darkMode: 'media', // Change this to 'media' or remove it
   plugins: [],
-};
+}
