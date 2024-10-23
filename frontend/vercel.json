@@ -5,7 +5,7 @@
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "frontend/dist"  // Ensure this matches Vite's default output directory
+        "distDir": "frontend/dist"  
       }
     },
     {
@@ -16,14 +16,14 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "backend/$1"  // Route for API calls
+      "dest": "backend/$1" 
     },
     {
       "src": "/(.*)",
-      "dest": "frontend/$1"  // Serve the frontend
+      "dest": "frontend/$1"  
     }
   ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }  // Optional: rewrite all requests to the root
+    { "source": "/(.*)", "destination": "/" }  
   ]
 }
