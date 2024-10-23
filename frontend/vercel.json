@@ -1,6 +1,29 @@
 {
-    "rewrites": [
-      { "source": "/(.*)", "destination": "/" }
-    ]
-  }
-  
+  "version": 2,
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "frontend/dist"  // Ensure this matches Vite's default output directory
+      }
+    },
+    {
+      "src": "backend/package.json",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "backend/$1"  // Route for API calls
+    },
+    {
+      "src": "/(.*)",
+      "dest": "frontend/$1"  // Serve the frontend
+    }
+  ],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }  // Optional: rewrite all requests to the root
+  ]
+}
