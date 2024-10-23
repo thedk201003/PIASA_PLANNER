@@ -1,20 +1,17 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const { db } = require('./db/db');
+const { db } = require('./db/db'); // Import the db function
 const { readdirSync } = require('fs');
 const app = express();
-require('dotenv').config();
 
 const PORT = process.env.PORT || 4000;
-
-
 
 // Middlewares
 app.use(express.json());
 app.use(cors());
 
-// Check if routes directory exists
+// Check if routes directory exists and load routes dynamically
 try {
     const routes = readdirSync('./routes');
     routes.forEach((route) => {
@@ -37,4 +34,4 @@ const server = () => {
     });
 };
 
-server();
+server(); // Start the server and connect to DB

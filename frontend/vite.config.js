@@ -11,9 +11,17 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: './',
+  base: './',  // This ensures that Vite uses relative paths, good for Vercel
   esbuild: {
     loader: 'jsx',  // Ensure JSX files are handled correctly
-    include: /\.jsx$/,  // Apply the JSX loader only to `.jsx` files
+    include: /src\/.*\.jsx?$/,  // Applies the JSX loader only to .jsx files in the src folder
   },
+  build: {
+    outDir: 'dist',  // Ensure the output directory is correctly set
+  },
+  server: {
+    proxy: {
+      '/api': 'http://localhost:3000'  // Proxy API requests to backend (adjust port if needed)
+    }
+  }
 })

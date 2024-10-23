@@ -5,11 +5,7 @@
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-<<<<<<< HEAD
-        "distDir": "frontend/dist" 
-=======
-        "distDir": "frontend/dist"  
->>>>>>> 3ee7ba3e0f491778d845eed59e26f25f1d773d38
+        "distDir": "frontend/dist"
       }
     },
     {
@@ -20,18 +16,11 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "backend/$1" 
+      "dest": "/backend/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "frontend/$1"  
+      "dest": "/frontend/$1"
     }
-  ],
-  "rewrites": [
-<<<<<<< HEAD
-    { "source": "/(.*)", "destination": "/" }  ]
-=======
-    { "source": "/(.*)", "destination": "/" }  
   ]
->>>>>>> 3ee7ba3e0f491778d845eed59e26f25f1d773d38
 }
