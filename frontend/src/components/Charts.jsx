@@ -1,17 +1,22 @@
-// Charts.js
 import React from 'react';
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-const Charts = ({ data }) => {
-  const expenseData = Object.entries(data.expenseCategory).map(([name, value]) => ({ name, value }));
+const Charts = ({ data = {} }) => {
+  const { expenseCategory = {}, totalExpense = 0, totalIncome = 0 } = data;
+
+  const expenseData = Object.entries(expenseCategory).map(([name, value]) => ({
+    name,
+    value,
+  }));
 
   return (
     <div className="flex flex-col lg:flex-row gap-8 p-4">
+      {/* Income vs Expense Bar Chart */}
       <div className="w-full lg:w-1/2">
         <h2 className="text-2xl font-semibold mb-4">Income vs Expense</h2>
         <div className='backdrop-blur-md bg-gray-300 rounded-lg p-4 shadow-xl'>
           <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={[data]}>
+            <BarChart data={[{ name: "Summary", totalExpense, totalIncome }]}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
               <YAxis />
@@ -24,6 +29,7 @@ const Charts = ({ data }) => {
         </div>
       </div>
 
+      {/* Expense by Category Pie Chart */}
       <div className="w-full lg:w-1/2">
         <h2 className="text-2xl font-semibold mb-4">Expense by Category</h2>
         <div className='backdrop-blur-md bg-gray-300 rounded-lg p-4 shadow-xl'>
@@ -40,7 +46,10 @@ const Charts = ({ data }) => {
                 dataKey="value"
               >
                 {expenseData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={['#0088FE', '#00C49F', '#FFBB28', '#FF8042','#FFAB28'][index % 4]} />
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FFAB28'][index % 5]}
+                  />
                 ))}
               </Pie>
               <Tooltip />

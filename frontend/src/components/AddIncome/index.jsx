@@ -20,7 +20,8 @@ const AddIncome = () => {
     const [incomes, setIncomes] = useState([]);
     const [isEditing, setIsEditing] = useState(false);
     const [editId, setEditId] = useState(null);
-    const [totalIncome, setTotalIncome] = useState(0);
+    //const [totalIncome, setTotalIncome] = useState(0);
+    const [totalIncome, setTotalIncome] = useState(incomes.length);    
     const [totalAmount, setTotalAmount] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
 

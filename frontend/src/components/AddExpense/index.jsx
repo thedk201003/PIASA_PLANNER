@@ -238,21 +238,20 @@ const AddExpense = () => {
                         ))}
                     </thead>
                     <tbody {...getTableBodyProps()}>
-                        {rows.map(row => {
-                            prepareRow(row)
-                            return (
-                                <tr {...row.getRowProps()} className="bg-gray-300">
-                                    {row.cells.map(cell => {
-                                        return (
-                                            <td {...cell.getCellProps()} className="border p-2 text-sm text-gray-700">
-                                                {cell.render('Cell')}
-                                            </td>
-                                        )
-                                    })}
-                                </tr>
-                            )
-                        })}
-                    </tbody>
+    {rows.map((row, rowIndex) => {
+        prepareRow(row);
+        return (
+            <tr {...row.getRowProps({ key: `${row.id}-${rowIndex}` })} className="bg-gray-300">
+                {row.cells.map((cell, cellIndex) => (
+                    <td {...cell.getCellProps()} className="border p-2 text-sm text-gray-700" key={`${row.id}-${cellIndex}`}>
+                        {cell.render('Cell')}
+                    </td>
+                ))}
+            </tr>
+        );
+    })}
+</tbody>
+
                 </table>
             </div>
         </SideNav>
