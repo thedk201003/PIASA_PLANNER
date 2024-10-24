@@ -1,9 +1,9 @@
 // src/axiosInstance.js
 import axios from 'axios';
 import { toast } from 'react-toastify';
- 
+
 const axiosInstance = axios.create({
-    baseURL: 'https://paisaplanner-1.onrender.com/api/',
+    baseURL: 'https://paisaplanner-1.onrender.com/api/', // Ensure this URL is correct
 });
 
 axiosInstance.interceptors.response.use(
@@ -14,6 +14,9 @@ axiosInstance.interceptors.response.use(
             localStorage.removeItem('token'); // Clear the token from local storage
             window.location.href = '/login'; // Redirect to the login page
             toast.error('Session expired. Please log in again.');
+        } else {
+            // Handle other errors
+            toast.error(error.response?.data?.message || 'An error occurred. Please try again.');
         }
         return Promise.reject(error);
     }

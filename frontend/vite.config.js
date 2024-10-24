@@ -6,8 +6,9 @@
  // plugins: [react()],
   //base: './',
 //})
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
@@ -20,8 +21,15 @@ export default defineConfig({
     outDir: 'dist',  // Ensure the output directory is correctly set
   },
   server: {
+    // Proxy API requests to the backend during local development
     proxy: {
-      '/api': 'http://localhost:3000'  // Proxy API requests to backend (adjust port if needed)
+      '/api': 'http://localhost:3000'  // Adjust port if your backend runs on a different port
+    }
+  },
+  resolve: {
+    alias: {
+      // Optional: Add any path aliases here
+      '@': '/src',  // This allows you to use '@' as a shorthand for your src folder
     }
   }
-})
+});
