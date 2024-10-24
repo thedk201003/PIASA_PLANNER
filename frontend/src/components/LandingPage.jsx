@@ -84,14 +84,14 @@ const LandingPage = () => {
         <section className="text-center mb-12">
           <h2 className="text-3xl font-semibold mb-4">Support Open Source</h2>
           <p className="mb-4">Paisa Planner is an open-source project. If you find it useful, please consider contributing and giving it a star on GitHub!</p>
-          <a href="https://github.com/thegeek36/PaisaPlanner" target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors">
+          <a href="https://github.com/thedk201003/PaisaPlanner" target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors">
             <FaGithub className="mr-2" /> Star on GitHub
           </a>
         </section>
       </main>
 
       <footer className="bg-gray-800 text-white p-4 text-center">
-        <p>&copy; 2024 Paisa Planner. Developed by Priyashu Panda. All rights reserved.</p>
+        <p>&copy; 2024 Paisa Planner. Developed by Dokesh Kumar Gadtia. All rights reserved.</p>
       </footer>
     </div>
   );
